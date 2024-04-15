@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>得点管理システム</title>
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}"/>
+</head>
+<body>
+
+    <div class="container">
+        <h1>本の編集を行う</h1>
+        <form th:action="@{/detail/{id}(id=*{id})}" th:object="${student}" method="POST">
+            <input type="hidden" th:field="*{id}" th:value="*{id}" />
+            
+            <div class="mb-3">
+                <p th:if="${#fields.hasErrors('ENT_YEAR')}" th:errors="*{ENT_YEAR}" class="text-danger">Price Error</p>
+                <label for="ENT_YEAR" class="form-label">入学年度</label>
+                <input id="ENT_YEAR" class="form-control" type="text" th:field="*{ENT_YEAR}">
+            </div>
+            
+            <div class="mb-3">
+                <p th:if="${#fields.hasErrors('NO')}" th:errors="*{NO}" class="text-danger">Price Error</p>
+                <label for="NO" class="form-label">学生番号</label>
+                <input id="NO" class="form-control" type="text" th:field="*{NO}">
+            </div>
+            
+            <div class="mb-3">
+                <p th:if="${#fields.hasErrors('NAME')}" th:errors="*{NAME}" class="text-danger">Title Error</p>
+                <label for="NAME" class="form-label">名前</label>
+                <input id="NAME" class="form-control" type="text" th:field="*{NAME}">
+            </div>
+            
+            <div class="mb-3">
+                <p th:if="${#fields.hasErrors('CLASS_NUM')}" th:errors="*{CLASS_NUM}" class="text-danger">Price Error</p>
+                <label for="CLASS_NUM" class="form-label">クラス番号</label>
+                <input id="CLASS_NUM" class="form-control" type="text" th:field="*{CLASS_NUM}">
+            </div>
+            
+            <div class="mb-3">
+                <p th:if="${#fields.hasErrors('IS_ATTEND')}" th:errors="*{IS_ATTEND}" class="text-danger">Price Error</p>
+                <label for="IS_ATTEND" class="form-label">在学中</label>
+                <input id="IS_ATTEND" class="form-control" type="checkbox" th:field="*{IS_ATTEND}">
+            </div>
+            
+            
+            <input type="submit" class="btn btn-primary" value="更新">
+        </form>
+        <a th:href="@{/view/}" class="btn btn-secondary">一覧に戻る</a>
+    </div>
+</body>
+</html>
